@@ -161,6 +161,22 @@ section {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: var(--dark-color);
+}
+
+/* Styling for inline labels (used with checkboxes and radio buttons) */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+    color: var(--dark-color);
 }
 
 input[type="range"] {
@@ -181,8 +197,43 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
 }
 
+/* Custom Checkbox Styling */
 input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--dark-color);
+    border-radius: 4px;
     margin-right: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: var(--transition);
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--dark-color);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]:hover {
+    border-color: var(--secondary-color);
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .resize-options {
@@ -195,6 +246,47 @@ input[type="checkbox"] {
 
 .resize-option {
     margin-bottom: 1rem;
+}
+
+/* Custom Radio Button Styling */
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--dark-color);
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: var(--transition);
+}
+
+input[type="radio"]:checked {
+    border: 2px solid var(--dark-color);
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--dark-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="radio"]:hover {
+    border-color: var(--secondary-color);
+}
+
+input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .dimension-inputs, .percentage-input {
