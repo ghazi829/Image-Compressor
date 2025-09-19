@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Image Compressor</title>
+    <link rel="icon" type="image/png" href="Logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- App Header -->
+    <header>
+        <h1>Image Compressor</h1>
+        <p>Compress and convert your images right in your browser</p>
+    </header>
+
+    <main class="container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="upload-section">
+            <div class="upload-container" id="drop-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h2>Upload Images</h2>
+                <p>Drag & drop images here or</p>
+                <label for="file-input" class="upload-btn">Browse Files</label>
+                <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" multiple hidden>
+                <p class="supported-formats">Supported formats: JPG, PNG, WebP</p>
+            </div>
+        </section>
+
+        <!-- Controls Section (hidden until image is uploaded) -->
+        <section class="controls-section" id="controls-section">
+            <div class="control-group">
+                <h3>Compression Options</h3>
+                
+                <div class="control">
+                    <label for="quality-slider">Quality: <span id="quality-value">80</span>%</label>
+                    <input type="range" id="quality-slider" min="0" max="100" value="80">
+                </div>
+                
+                <div class="control">
+                    <label for="resize-toggle">Resize Image</label>
+                    <input type="checkbox" id="resize-toggle">
+                </div>
+                
+                <div class="resize-options" id="resize-options">
+                    <div class="resize-option">
+                        <input type="radio" id="resize-pixels" name="resize-type" value="pixels" checked>
+                        <label for="resize-pixels">Pixels</label>
+                        
+                        <div class="dimension-inputs">
+                            <div class="dimension-input">
+                                <label for="width-input">Width</label>
+                                <input type="number" id="width-input" placeholder="Width">
+                            </div>
+                            <div class="dimension-input">
+                                <label for="height-input">Height</label>
+                                <input type="number" id="height-input" placeholder="Height">
+                            </div>
+                            <div class="maintain-aspect">
+                                <input type="checkbox" id="maintain-aspect" checked>
+                                <label for="maintain-aspect">Maintain aspect ratio</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resize-option">
+                        <input type="radio" id="resize-percentage" name="resize-type" value="percentage">
+                        <label for="resize-percentage">Percentage</label>
+                        
+                        <div class="percentage-input">
+                            <input type="number" id="percentage-input" value="100" min="1" max="100">
+                            <span>%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control">
+                    <label for="format-select">Output Format</label>
+                    <select id="format-select">
+                        <option value="same">Same as input</option>
+                        <option value="jpeg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="compress-btn" class="primary-btn">Compress</button>
+                <button id="download-btn" class="secondary-btn" >Download</button>
+                <button id="reset-btn" class="tertiary-btn">Upload New Image  & Reset</button>
+            </div>
+        </section>
+
+        <!-- Preview Section (hidden until image is processed) -->
+        <section class="preview-section" id="preview-section">
+            <h3>Image Preview</h3>
+            
+            <div class="preview-container">
+                <div class="preview-card">
+                    <h4>Original</h4>
+                    <div class="preview-image-container">
+                        <img id="original-preview" alt="Original image preview">
+                    </div>
+                    <div class="file-info">
+                        <p>Size: <span id="original-size">0 KB</span></p>
+                        <p>Dimensions: <span id="original-dimensions">0 x 0</span></p>
+                    </div>
+                </div>
+                
+                <div class="preview-card">
+                    <h4>Compressed</h4>
+                    <div class="preview-image-container">
+                        <img id="compressed-preview" alt="Compressed image preview">
+                    </div>
+                    <div class="file-info">
+                        <p>Size: <span id="compressed-size">0 KB</span></p>
+                        <p>Dimensions: <span id="compressed-dimensions">0 x 0</span></p>
+                        <p>Reduction: <span id="size-reduction">0%</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Batch Processing Section -->
+        <section class="batch-section" id="batch-section">
+            <h3>Batch Processing</h3>
+            <div class="batch-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p><span id="processed-count">0</span>/<span id="total-count">0</span> images processed</p>
+            </div>
+            
+            <div class="batch-results" id="batch-results">
+                <!-- Batch results will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created By Pir Ghazi | Client-side image compression - Your images never leave your browser</p>
+    </footer>
+
+    <!-- Web Worker for image processing -->
+    <script src="script.js"></script>
+
+</body>
+</html>
