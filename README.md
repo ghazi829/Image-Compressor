@@ -25,7 +25,7 @@ A sleek, client-side image compression web application built with **HTML, CSS, a
 
 ## 🚀 Live Demo
 
-👉 [Try the Image Compressor Here](https://ghazi829.github.io/Image-Compressor/)
+👉 [Try the Image Compressor Here](https://ghazi829.github.io/Image-Compressor./)
 
 ## 📁 Project Structure
 
